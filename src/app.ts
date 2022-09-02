@@ -4,6 +4,7 @@ import ip from "ip";
 import { HttpResponse } from "./domain/response";
 import { Code } from "./enum/code.enum";
 import { Status } from "./enum/status.enum";
+import patientRoutes from "./routes/patient.routes";
 
 export class App {
     private readonly app: Application;
@@ -30,7 +31,7 @@ export class App {
         this.app.use(express.json());
     }
     private routes(): void {
-        this.app.use("/patients", (req, res) => {});
+        this.app.use("/patients", patientRoutes);
         this.app.get("/", (req, res) =>
             res
                 .status(Code.OK)
